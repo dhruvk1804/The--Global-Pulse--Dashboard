@@ -15,7 +15,7 @@ function QuoteHeader() {
         setQuote({ q: 'Keep going.', a: 'Unknown' });
         setLoading(false);
       });
-  }, []); // ← empty array = run ONCE only
+  }, []); 
 
   if (loading) return <div className="quote-header">Loading quote...</div>;
 

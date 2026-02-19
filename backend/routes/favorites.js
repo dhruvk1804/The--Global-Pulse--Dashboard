@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   try {
     const { countryName, flagUrl } = req.body;
 
-    console.log('Request body:', req.body); // ADD THIS
+    console.log('Request body:', req.body); 
 
     if (!countryName || !flagUrl) {
       return res.status(400).json({ message: 'countryName and flagUrl are required' });
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
     const favorite = await Favorite.create({ countryName, flagUrl });
     res.status(201).json(favorite);
   } catch (err) {
-    console.error('POST Error:', err.message); // ADD THIS
+    console.error('POST Error:', err.message); 
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });

@@ -39,7 +39,7 @@ function Favorites() {
             <h1>❤️ My Favorites</h1>
 
             {favorites.length === 0 ? (
-                <p className="status-msg">No favorites yet! Go add some countries ❤️</p>
+                <p className="status-msg">No favorites yet!</p>
             ) : (
                 <div className="favorites-grid">
                     {favorites.map(fav => (

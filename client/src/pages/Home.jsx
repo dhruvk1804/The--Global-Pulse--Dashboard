@@ -49,7 +49,7 @@ function Home() {
     return (
         <div className="app">
             <h1>Global Pulse Dashboard</h1>
-            <QuoteHeader />       {/* ← ADD THIS */}
+            <QuoteHeader />       
             <div className="controls">
                 <SearchBar search={search} setSearch={setSearch} />
                 <RegionFilter region={region} setRegion={setRegion} />
