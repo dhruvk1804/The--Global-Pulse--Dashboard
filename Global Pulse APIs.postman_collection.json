@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "7d0bbe79-0c4f-40c9-aa65-dc59b3bd4f51",
+    "name": "Global Pulse APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52459979"
+  },
+  "item": [
+    {
+      "name": "Get All Countries",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,currencies",
+          "protocol": "https",
+          "host": ["restcountries", "com"],
+          "path": ["v3.1", "all"],
+          "query": [
+            {
+              "key": "fields",
+              "value": "name,flags,population,region,capital,currencies"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Coin Markets",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1",
+          "protocol": "https",
+          "host": ["api", "coingecko", "com"],
+          "path": ["api", "v3", "coins", "markets"],
+          "query": [
+            { "key": "vs_currency", "value": "usd" },
+            { "key": "order", "value": "market_cap_desc" },
+            { "key": "per_page", "value": "10" },
+            { "key": "page", "value": "1" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Quotes",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://zenquotes.io/api/quotes/",
+          "protocol": "https",
+          "host": ["zenquotes", "io"],
+          "path": ["api", "quotes", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Favorites",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/favorites",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "favorites"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post Favorites",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 201', function () {",
+              "    pm.response.to.have.status(201);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"countryName\": \"India\",\n  \"flagUrl\": \"https://flagcdn.com/w320/in.png\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/favorites",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "favorites"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Favorites",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/favorites/:id",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "favorites", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "6995573cb82fff15ef98e60e"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

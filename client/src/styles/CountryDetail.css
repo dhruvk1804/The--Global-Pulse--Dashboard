@@ -1,0 +1,71 @@
+.detail-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.detail-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.detail-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #f1f5f9;
+}
+
+.detail-card p {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+}
+
+.coins-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.coin-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.coin-card img {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.coin-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.coin-card .price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #60a5fa;
+}
+
+.coin-card .positive {
+    color: #4ade80;
+}
+
+.coin-card .negative {
+    color: #f87171;
+}
