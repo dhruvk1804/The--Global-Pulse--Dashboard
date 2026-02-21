@@ -18,25 +18,26 @@ router.post('/', async (req, res) => {
   try {
     const { countryName, flagUrl } = req.body;
 
-    console.log('Request body:', req.body); 
-
     if (!countryName || !flagUrl) {
       return res.status(400).json({ message: 'countryName and flagUrl are required' });
+    }
+
+    const existing = await Favorite.findOne({ countryName }); // ✅ ADDED: duplicate check
+    if (existing) {
+      return res.status(409).json({ message: `${countryName} is already in your favorites` }); // ✅ ADDED
     }
 
     const favorite = await Favorite.create({ countryName, flagUrl });
     res.status(201).json(favorite);
   } catch (err) {
-    console.error('POST Error:', err.message); 
+    console.error('POST Error:', err.message);
     res.status(500).json({ message: 'Server error', error: err.message });
   }
 });
 
-
-// DELETE /api/favorites/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => { // ✅ CHANGED: /:id instead of /countryName
   try {
-    const deleted = await Favorite.findByIdAndDelete(req.params.id);
+    const deleted = await Favorite.findByIdAndDelete(req.params.id); // ✅ CHANGED: findByIdAndDelete
     if (!deleted) {
       return res.status(404).json({ message: 'Favorite not found' });
     }

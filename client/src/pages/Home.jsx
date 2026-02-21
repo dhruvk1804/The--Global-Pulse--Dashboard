@@ -7,7 +7,6 @@ import CountryCard from '../components/CountryCard';
 import QuoteHeader from '../components/QuoteHeader';
 import '../styles/Home.css';
 
-
 function Home() {
     const [countries, setCountries] = useState([]);
     const [filtered, setFiltered] = useState([]);
@@ -15,7 +14,17 @@ function Home() {
     const [region, setRegion] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [favorites, setFavorites] = useState([]); // ✅ ADDED: favorites state
     const navigate = useNavigate();
+
+    const fetchFavorites = async () => { // ✅ ADDED: fetch favorites function
+        try {
+            const res = await axios.get('http://localhost:8000/api/favorites');
+            setFavorites(res.data);
+        } catch (err) {
+            console.error('Failed to fetch favorites:', err.message);
+        }
+    };
 
     useEffect(() => {
         axios.get('https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,currencies')
@@ -28,6 +37,8 @@ function Home() {
                 setError('Failed to load countries.');
                 setLoading(false);
             });
+
+        fetchFavorites(); // ✅ ADDED: load favorites on mount
     }, []);
 
     useEffect(() => {
@@ -49,7 +60,7 @@ function Home() {
     return (
         <div className="app">
             <h1>Global Pulse Dashboard</h1>
-            <QuoteHeader />       
+            <QuoteHeader />
             <div className="controls">
                 <SearchBar search={search} setSearch={setSearch} />
                 <RegionFilter region={region} setRegion={setRegion} />
@@ -61,6 +72,8 @@ function Home() {
                         key={country.name.common}
                         country={country}
                         onClick={() => navigate(`/country/${country.name.common}`)}
+                        favorites={favorites}           // ✅ ADDED: passed favorites
+                        fetchFavorites={fetchFavorites} // ✅ ADDED: passed fetchFavorites
                     />
                 ))}
             </div>
